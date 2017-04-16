@@ -1,0 +1,8 @@
+#!/bin/bash
+
+go fmt
+go build
+
+if [ "$1" == "and" ] && [ "$2" == "run" ]; then
+	./infogramer
+fi
