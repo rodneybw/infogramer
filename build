@@ -4,5 +4,5 @@ go fmt
 go build
 
 if [ "$1" == "and" ] && [ "$2" == "run" ]; then
-	./infogramer
+	./infogramer "$3" "$4" "$5" "$6" "$7"
 fi
