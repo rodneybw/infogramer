@@ -7,9 +7,19 @@ import (
 
 func main() {
 
-	message := flag.String("message", "", "Message")
-	importance := flag.String("importance", "low", "Importance: (low|normal|high)")
+	msg := flag.String("message", "", "Message")
+	_ = flag.String("importance", "low", "Importance: (low|normal|high)")
 	flag.Parse()
 
-	fmt.Printf("Message: %s\nImportance: %s\n", *message, *importance)
+	config, err := GetConfig()
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(config)
+
+	err = SendMessage(*msg, config.ChatId, config.Token)
+	// fmt.Println(err)
 }
