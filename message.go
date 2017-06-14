@@ -3,13 +3,13 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
+	_ "fmt"
 	"io/ioutil"
 	"net/http"
 )
 
 type MessageParameters struct {
-	ChatId int64  `json:"chat_id"`
+	ChatId int64  `json:"chat_id"` // telegram internal chat id
 	Text   string `json:"text"`
 }
 
@@ -47,7 +47,7 @@ func SendMessage(text string, chatId int64, token string) error {
 		return err
 	}
 
-	fmt.Println(string(body))
+	// fmt.Println(string(body))
 
 	msg := Message{}
 	err = json.Unmarshal(body, &msg)

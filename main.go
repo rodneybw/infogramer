@@ -7,10 +7,11 @@ import (
 
 func main() {
 
+	// call like that: 'infogramer --message="Hello. How are you? Do you feel informed?"'
 	msg := flag.String("message", "", "Message")
-	_ = flag.String("importance", "low", "Importance: (low|normal|high)")
 	flag.Parse()
 
+	// Configuration contains the bot token and the chat id (see: https://core.telegram.org/api)
 	config, err := GetConfig()
 
 	if err != nil {
@@ -18,8 +19,5 @@ func main() {
 		return
 	}
 
-	fmt.Println(config)
-
 	err = SendMessage(*msg, config.ChatId, config.Token)
-	// fmt.Println(err)
 }
