@@ -44,7 +44,7 @@ $ infogramer -message="Hello. Do you already feel informed?"
 
 Add this line to `/etc/profile`:
 ```sh
-infogramer -message="SSH Login @ $(hostname)\n$(date +%Y-%d-%m) - $(date +%H:%M)\nUser:$USER" # note: german time format ;)
+$ infogramer -message="*SSH Login*\n$USER @ $(hostname)\n$(date +%d.%m.%Y), $(date +%H:%M)" # note: german time format ;)
 ```
 
 #### Good morning wishes using cron
