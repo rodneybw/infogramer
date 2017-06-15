@@ -4,7 +4,7 @@ Infogramer is a private Telegram Bot. Its purpose is replacing mail for sending 
 ## How to install
 
 Requirements:
-* Go >= 1.7.1
+* Go >= 1.7.1 (https://golang.org/)
 * Ubuntu/Debian (Only tested on these, but should work fine on any other distributions)
 
 Follow these instructions to create the Telegram Bot and note down the Bot Token: https://core.telegram.org/bots#6-botfather Start a conversation with your bot and write him a message. **(Important for later steps!)**
@@ -56,4 +56,6 @@ Crontab:
 ```
 
 ## TODO
+- [ ] log support
 - [ ] mail fallback
+
