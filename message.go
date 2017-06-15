@@ -3,9 +3,9 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	_ "fmt"
 	"io/ioutil"
 	"net/http"
+	"strings"
 )
 
 type MessageParameters struct {
@@ -19,6 +19,10 @@ type Message struct {
 }
 
 func SendMessage(text string, chatId int64, token string) error {
+
+	// interpret special chars similar to echo (see: http://linuxcommand.org/lc3_man_pages/echoh.html)
+	repl := strings.NewReplacer("\\n", "\n", "\\t", "\t")
+	text = repl.Replace(text)
 
 	url := "https://api.telegram.org/bot" + token + "/sendMessage"
 	param := &MessageParameters{
