@@ -39,17 +39,20 @@ $ infogramer -message="Hello. Do you already feel informed?"
 ```
 
 ## Usage 
-### Notification if a ssh login occurs on your machine
+#### Notification if a ssh login occurs on your machine
 
 Add this line to `/etc/profile`:
 ```sh
 infogramer -message="SSH Login @ $(hostname)\n$(date +%Y-%d-%m) - $(date +%H:%M)\nUser:$USER" # note: german time format ;)
 ```
 
-### Good morning wishes using cron
+#### Good morning wishes using cron
 Crontab:
 ```sh
 ...
 0 9 * * * infogramer -message="Heeeeeeeey. A new day begins, sunshine. :)" >/dev/null 2>&1
 ...
 ```
+
+## TODO
+- [ ] mail fallback
