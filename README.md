@@ -4,10 +4,11 @@
 
 Requirements:
 * Go >= 1.7.1
+* Ubuntu/Debian (Only tested on these, but should work fine on any other distributions)
 
 Follow these instructions to create the Telegram Bot and note down the Bot Token: https://core.telegram.org/bots#6-botfather Start a conversation with your bot and write him a message. **(Important for later steps!)**
 
-Continue with these steps... (Ubuntu/Debian)
+Continue with these steps...
 ```sh
 # Download the repository
 $ git clone https://github.com/rodneybw/infogramer.git
@@ -36,5 +37,11 @@ $ echo '{"chat_id": CHAT_ID, "token": "BOT_TOKEN"}' > /etc/infogramer
 # Test it :)
 $ infogramer -message="Hello. Do you already feel informed?"
 ```
-    
 
+## Usage 
+### Notification if a ssh login occurs on your machine
+
+Add this line to `/etc/profile`:
+```sh
+infogramer -message="SSH Login @ $(hostname)\n$(date +%Y-%d-%m) - $(date +%H:%M)\nUser:$USER" # note: german time format ;)
+```
