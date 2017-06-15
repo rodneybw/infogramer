@@ -5,8 +5,9 @@
 Requirements:
 * Go >= 1.7.1
 
-Follow these instructions to create the Telegram Bot: https://core.telegram.org/bots#6-botfather
+Follow these instructions to create the Telegram Bot and note down the Bot Token: https://core.telegram.org/bots#6-botfather Start a conversation with your bot and write him a message. **(Important for later steps!)**
 
+Continue with these steps... (Ubuntu/Debian)
 ```sh
 # Download the repository
 $ git clone https://github.com/rodneybw/infogramer.git
@@ -21,7 +22,15 @@ $ cp ./infogramer /usr/local/bin/infogramer
 # Make it executable
 $ chmod a+x /usr/local/bin/infogramer
 
-# Create the config file. Replace CHAT_ID with your chat id and BOT_TOKEN with the token botfather told you.
+# Get the telegram chat id. Replace BOT_TOKEN with your token. You should see the message you sent earlier.
+$ infogramer -getId -token="BOT_TOKEN"
+
+# Example output: 
+# Trying to get the telegram chat id...
+# Message: 'one slice of pizza please'
+# Is this message correct? Then your chat id is 123456789
+
+# Create the config file. Replace CHAT_ID and BOT_TOKEN with yours.
 $ echo '{"chat_id": CHAT_ID, "token": "BOT_TOKEN"}' > /etc/infogramer
 
 # Test it :)
