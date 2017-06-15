@@ -9,8 +9,9 @@ import (
 )
 
 type MessageParameters struct {
-	ChatId int64  `json:"chat_id"` // telegram internal chat id
-	Text   string `json:"text"`
+	ChatId    int64  `json:"chat_id"` // telegram internal chat id
+	Text      string `json:"text"`
+	ParseMode string `json:"parse_mode"` // html or markdown
 }
 
 type Message struct {
@@ -21,8 +22,9 @@ func SendMessage(text string, chatId int64, token string) error {
 
 	url := "https://api.telegram.org/bot" + token + "/sendMessage"
 	param := &MessageParameters{
-		ChatId: chatId,
-		Text:   text,
+		ChatId:    chatId,
+		Text:      text,
+		ParseMode: "markdown", // see: https://core.telegram.org/bots/api#markdown-style
 	}
 
 	para, err := json.Marshal(param)
