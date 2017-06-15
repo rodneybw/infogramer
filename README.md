@@ -1,4 +1,5 @@
 # infogramer - Telegram Bot
+Infogramer is a private Telegram Bot. Its purpose is replacing mail for sending informations to you about what's happening on your server.
 
 ## How to install
 
