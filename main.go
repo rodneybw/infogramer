@@ -10,6 +10,7 @@ func main() {
 
 	// call like that: 'infogramer --message="Hello. How are you? Do you feel informed?"'
 	msg := flag.String("message", "", "Message")
+	silent := flag.Bool("silent", false, "Sends the message silently. You will receive a notification with no sound. (Default: false)")
 	getId := flag.Bool("getId", false, "Get the chat id. (Use it only during the installation steps. Message will be ignored.)")
 	token := flag.String("token", "", "Telegram Bot Token. Only use this parameter if you use getId during the installation process.")
 	flag.Parse()
@@ -45,5 +46,5 @@ func main() {
 		return
 	}
 
-	err = SendMessage(*msg, config.ChatId, config.Token)
+	err = SendMessage(*msg, config.ChatId, *silent, config.Token)
 }

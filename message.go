@@ -12,13 +12,14 @@ type MessageParameters struct {
 	ChatId    int64  `json:"chat_id"` // telegram internal chat id
 	Text      string `json:"text"`
 	ParseMode string `json:"parse_mode"` // html or markdown
+	Silent    bool   `json:"disable_notification"`
 }
 
 type Message struct {
 	MessageId int64 `json:"message_id"`
 }
 
-func SendMessage(text string, chatId int64, token string) error {
+func SendMessage(text string, chatId int64, silent bool, token string) error {
 
 	// interpret special chars similar to echo (see: http://linuxcommand.org/lc3_man_pages/echoh.html)
 	repl := strings.NewReplacer("\\n", "\n", "\\t", "\t")
@@ -29,6 +30,7 @@ func SendMessage(text string, chatId int64, token string) error {
 		ChatId:    chatId,
 		Text:      text,
 		ParseMode: "markdown", // see: https://core.telegram.org/bots/api#markdown-style
+		Silent:    silent,
 	}
 
 	para, err := json.Marshal(param)
