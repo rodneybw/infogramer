@@ -54,6 +54,38 @@ Crontab:
 0 9 * * * infogramer -message="Heeeeeeeey. A new day begins, sunshine. :)" >/dev/null 2>&1
 ...
 ```
+### Notification for pending package upgrades
+Create /usr/local/bin/aptigram.sh:
+```sh
+#!/bin/bash
+
+/usr/bin/apt-get update
+
+# get the list of packages which are pending an upgrade (copied from apticron)
+packages=`/usr/bin/apt-get -q -y --ignore-hold --allow-unauthenticated -s dist-upgrade | \
+          /bin/grep ^Inst | /usr/bin/cut -d\  -f2 | /usr/bin/sort`
+
+message="*Aptigram*\nNew upgrades available!\n\n"
+newPackage=false # only send a message if neccesary
+
+for p in $packages; do
+	message="$message\`$p\`\n"
+	newPackage=true
+done
+
+if [ $newPackage = false ]; then
+	exit
+fi
+
+infogramer -message="$message"
+```
+
+Add a root cronjob:
+```sh
+# e.g. every Monday and Thursday 2 o'clock: 0 14 * * 1,4 /usr/local/bin/aptigram.sh
+$ sudo crontab -e
+```
+
 
 ## TODO
 - [ ] log support
